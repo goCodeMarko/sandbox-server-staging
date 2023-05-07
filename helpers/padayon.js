@@ -9,7 +9,7 @@ const
     moment = require('moment'),
     userController = require(`../controllers/user`),
     { v4: uuidv4 } = require('uuid');
-    cron = require('node-cron');
+    // cron = require('node-cron');
 
 
 module.exports.execute = (controller, options = {}) => async (req, res) => {
@@ -152,21 +152,22 @@ module.exports.init = {
                     break;
             }
         })
-    },
-
-    cron: () => {
-        cron.schedule('17 19 * * *', () => {
-            console.log('running a task every 17 19');
-        }, {
-            timezone: "Asia/Manila"
-        });
-
-        cron.schedule('* * * * *', () => {
-            console.log('running a task every minute');
-        }, {
-            timezone: "Asia/Manila"
-        });
-
-        console.log('\x1b[36m', `Cronjob(s) Activated...`);
     }
+    // ,
+
+    // cron: () => {
+    //     cron.schedule('17 19 * * *', () => {
+    //         console.log('running a task every 17 19');
+    //     }, {
+    //         timezone: "Asia/Manila"
+    //     });
+
+    //     cron.schedule('* * * * *', () => {
+    //         console.log('running a task every minute');
+    //     }, {
+    //         timezone: "Asia/Manila"
+    //     });
+
+    //     console.log('\x1b[36m', `Cronjob(s) Activated...`);
+    // }
 };
