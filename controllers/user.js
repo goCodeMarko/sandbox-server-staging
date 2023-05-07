@@ -7,9 +7,9 @@ const
     jwt = require('jsonwebtoken'),
     qrcode = require('./../helpers/qrcode'),
     pdf = require('./../helpers/pdf'),
-    puppeteer = require('puppeteer'),
+    // puppeteer = require('puppeteer'),
     excel = require('./../helpers/excel'),
-    papaparse = require('./../helpers/papaparse'),
+    //papaparse = require('./../helpers/papaparse'),
     cloudinary = require('./../helpers/cloudinary');
 let $global = { success: true, data: [], message: '', code: 200 };
 
@@ -196,16 +196,16 @@ module.exports.downloadPDF = async (req, res) => {
         const result = await pdf.generate(args);
         */
 
-        const browser = await puppeteer.launch();
-        const page = await browser.newPage();
+        // const browser = await puppeteer.launch();
+        // const page = await browser.newPage();
 
-        await page.pdf({
-            path: 'output.pdf',
-            format: 'A4',
-            printBackground: true
-        })
-        console.log('done creating document!')
-        await browser.close();
+        // await page.pdf({
+        //     path: 'output.pdf',
+        //     format: 'A4',
+        //     printBackground: true
+        // })
+        // console.log('done creating document!')
+        // await browser.close();
 
         $global.data = result;
     } catch (error) {
@@ -256,7 +256,7 @@ module.exports.downloadExcel = async (req, res) => {
 module.exports.downloadCSV = async(req, res) => {
     try {
         let books = await bookController.getBooks(req, res);
-        papaparse.generate();
+        // papaparse.generate();
     } catch (error) {
         console.log(error);
         padayon.errorHandler('Controller::User::downloadCSV', error, req, res)
