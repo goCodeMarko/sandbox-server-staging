@@ -8,6 +8,7 @@ const
     jwt = require('jsonwebtoken'),
     qrcode = require('./../helpers/qrcode'),
     pdf = require('./../helpers/pdf'),
+    puppeteer = require('puppeteer'),
     excel = require('./../helpers/excel'),
     papaparse = require('./../helpers/papaparse'),
     cloudinary = require('./../helpers/cloudinary');
@@ -171,6 +172,7 @@ module.exports.getFile = async (req, res) => {
 
 module.exports.downloadPDF = async (req, res) => {
     try {
+        /*
         const public_id = req.query.public_id;
         const qrcodeURL = await fetchFile(public_id, {
             sign_url: true,
@@ -193,6 +195,18 @@ module.exports.downloadPDF = async (req, res) => {
         };
         
         const result = await pdf.generate(args);
+        */
+
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+
+        await page.pdf({
+            path: 'output.pdf',
+            format: 'A4',
+            printBackground: true
+        })
+        console.log('done creating document!')
+        await browser.close();
 
         $global.data = result;
     } catch (error) {
