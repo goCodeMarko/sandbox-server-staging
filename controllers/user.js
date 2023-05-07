@@ -4,7 +4,6 @@ const
     base = path.basename(__filename, '.js'),
     model = require(`./../models/${base}`),
     bookController = require(`./../controllers/book`),
-    bcrypt = require('bcrypt'),
     jwt = require('jsonwebtoken'),
     qrcode = require('./../helpers/qrcode'),
     pdf = require('./../helpers/pdf'),
