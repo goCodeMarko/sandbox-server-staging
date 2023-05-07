@@ -18,7 +18,7 @@ const
     clientFolder = config.server.type == 'local' ? 'sandbox-client/client' : 'public';
 
 init.mongoose();
-init.cron();
+// init.cron();
 
 app
     .use(requestLogger)
