@@ -19,11 +19,9 @@
     "multer": "^1.4.5-lts.1",
     "node-cron": "^3.0.2",
     "papaparse": "^5.4.1",
-    "pdf-creator-node": "^2.3.5",
     "puppeteer": "^20.1.1",
     "qrcode": "^1.5.1",
-    "uuid": "^9.0.0",
-    "zlib": "^1.0.5"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
@@ -36,6 +34,6 @@
   "author": "Patrick Marck D. Dulaca",
   "license": "ISC",
   "engines": {
-    "node": "16.16.0"
+    "node": "16.20.0"
   }
 }

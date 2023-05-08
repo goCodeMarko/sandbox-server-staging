@@ -13,8 +13,6 @@ const
     cloudinary = require('./../helpers/cloudinary');
 let $global = { success: true, data: [], message: '', code: 200 };
 
-
-
 module.exports.getUser = async (req, res) => {
     try {
         await model.getUser(req, res, (result) => {
@@ -171,7 +169,6 @@ module.exports.getFile = async (req, res) => {
 
 module.exports.downloadPDF = async (req, res) => {
     try {
-        /*
         const public_id = req.query.public_id;
         const qrcodeURL = await fetchFile(public_id, {
             sign_url: true,
@@ -182,33 +179,15 @@ module.exports.downloadPDF = async (req, res) => {
         });
 
         let books = await bookController.getBooks(req, res);
-
-        let args = {
-            data: {
-                th: ['AUTHOR', 'STOCKS', 'TITLE', 'PRICE'],
-                td: books.data.data,
-                qrcode: qrcodeURL
-            },
-            template: 'unknown_report',
-            cloudinaryFolder: 'unknown_reports',
-        };
         
-        const result = await pdf.generate(args);
-        */
+        const result = await pdf.generate('index', {
+            name: 'Patric Marck Dulaca',
+            th: ['AUTHOR', 'STOCKS', 'TITLE', 'PRICE'],
+            td: books.data.data,
+            qrcode: qrcodeURL
+        });
 
-        const browser = await puppeteer.launch();
-        const page = await browser.newPage();
-        console.log('browser', browser);
-        console.log('page', page);
-        await page.pdf({
-            path: 'output.pdf',
-            format: 'A4',
-            printBackground: true
-        })
-        console.log('done creating document!')
-        await browser.close();
-
-        // $global.data = result;
+        $global.data = result;
     } catch (error) {
         console.log(error);
         padayon.errorHandler('Controller::User::downloadPDF', error, req, res)
