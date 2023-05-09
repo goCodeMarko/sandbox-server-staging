@@ -25,7 +25,7 @@ app
 
     .use(cookieParser())
 
-    .use(cors())
+    .use(cors('*'))
 
     .use(express.static(path.join(__dirname, clientFolder)))
 
